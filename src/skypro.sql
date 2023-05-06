@@ -226,3 +226,110 @@ skypro-# order by age;
  Ivan  | Ivanov  |      17
  Peter | Petrov  |      25
 (2 строки)
+
+
+
+    *********************************
+    Работа с несколькими таблицами
+
+    skypro=# CREATE TABLE city (
+skypro(# city_id BIGSERIAL NOT NULL PRIMARY KEY,
+skypro(# city_name VARCHAR NOT NULL);
+CREATE TABLE
+
+    skypro=# ALTER TABLE employee ADD city_id int;
+ALTER TABLE
+
+    skypro=# ALTER TABLE employee ADD CONSTRAINT ciry_id FOREIGN KEY (city_id) REFERENCES city(city_id);
+ALTER TABLE
+
+skypro=# INSERT INTO city (city_name) VALUES ('Moscow');
+INSERT 0 1
+skypro=# INSERT INTO city (city_name) VALUES ('Saint Petersburg');
+INSERT 0 1
+skypro=# INSERT INTO city (city_name) VALUES ('Minsk');
+INSERT 0 1
+
+
+    skypro=# UPDATE employee SET city_id = '1' where first_name = 'Ivan' and last_name = 'Ivanov';
+UPDATE 2
+skypro=# UPDATE employee SET city_id = '2' where first_name = 'Peter' and last_name = 'Petrov';
+UPDATE 2
+    skypro=# UPDATE employee SET city_id = '3' where first_name = 'Daria';
+UPDATE 1
+
+
+    skypro=# INSERT INTO city (city_name) VALUES ('Kursk');
+INSERT 0 1
+
+
+skypro=# SELECT employee.first_name AS имя, employee.last_name AS фамилия, city.city_name AS город
+skypro-# FROM employee INNER JOIN city ON employee.city_id = city.city_id;
+  имя  |  фамилия  |      город
+-------+-----------+------------------
+ Ivan  | Ivanov    | Moscow
+ Ivan  | Ivanov    | Moscow
+ Peter | Petrov    | Saint Petersburg
+ Peter | Petrov    | Saint Petersburg
+ Daria | Zhelyaeva | Minsk
+(5 строк)
+
+
+skypro=# SELECT employee.first_name AS имя, employee.last_name AS фамилия, city.city_name AS город
+skypro-# FROM employee RIGHT JOIN city ON employee.city_id = city.city_id;
+  имя  |  фамилия  |      город
+-------+-----------+------------------
+ Ivan  | Ivanov    | Moscow
+ Ivan  | Ivanov    | Moscow
+ Peter | Petrov    | Saint Petersburg
+ Peter | Petrov    | Saint Petersburg
+ Daria | Zhelyaeva | Minsk
+       |           | Kursk
+(6 строк)
+
+
+skypro=# INSERT INTO employee (first_name, last_name, gender, age) VALUES ('Anna', 'Annova', 'w', 54);
+INSERT 0 1
+skypro=# SELECT employee.first_name AS имя, employee.last_name AS фамилия, city.city_name AS город
+skypro-# FROM employee FULL JOIN city ON employee.city_id = city.city_id;
+  имя  |  фамилия  |      город
+-------+-----------+------------------
+ Ivan  | Ivanov    | Moscow
+ Ivan  | Ivanov    | Moscow
+ Peter | Petrov    | Saint Petersburg
+ Peter | Petrov    | Saint Petersburg
+ Daria | Zhelyaeva | Minsk
+       |           | Kursk
+ Anna  | Annova    |
+(7 строк)
+
+
+skypro=# SELECT employee.first_name AS имя, employee.last_name AS фамилия, city.city_name AS город
+skypro-# FROM employee CROSS JOIN city;
+  имя  |  фамилия  |      город
+-------+-----------+------------------
+ Ivan  | Ivanov    | Moscow
+ Ivan  | Ivanov    | Moscow
+ Peter | Petrov    | Moscow
+ Peter | Petrov    | Moscow
+ Daria | Zhelyaeva | Moscow
+ Anna  | Annova    | Moscow
+ Ivan  | Ivanov    | Saint Petersburg
+ Ivan  | Ivanov    | Saint Petersburg
+ Peter | Petrov    | Saint Petersburg
+ Peter | Petrov    | Saint Petersburg
+ Daria | Zhelyaeva | Saint Petersburg
+ Anna  | Annova    | Saint Petersburg
+ Ivan  | Ivanov    | Minsk
+ Ivan  | Ivanov    | Minsk
+ Peter | Petrov    | Minsk
+ Peter | Petrov    | Minsk
+ Daria | Zhelyaeva | Minsk
+ Anna  | Annova    | Minsk
+ Ivan  | Ivanov    | Kursk
+ Ivan  | Ivanov    | Kursk
+ Peter | Petrov    | Kursk
+ Peter | Petrov    | Kursk
+ Daria | Zhelyaeva | Kursk
+ Anna  | Annova    | Kursk
+(24 строки)
