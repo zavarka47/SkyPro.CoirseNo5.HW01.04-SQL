@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ce938872-7ac4-4f4a-9829-5364b78280de" name="Changes" comment="Done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/skypro.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/skypro.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +34,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Zavarka_47/Documents/Java Education/Course_No.4/homework_4.2.1",
+    "last_opened_file_path": "C:/Users/Zavarka_47/Documents/Java Education/Course_No.5/homowork_5.1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -51,7 +50,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683045553436</updated>
-      <workItem from="1683045554086" duration="8642000" />
+      <workItem from="1683045554086" duration="10960000" />
+      <workItem from="1683737017315" duration="377000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1683045678325</created>
@@ -74,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683132234086</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Done">
+      <created>1683376434278</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683376434278</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

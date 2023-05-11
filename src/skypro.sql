@@ -333,3 +333,12 @@ skypro-# FROM employee CROSS JOIN city;
  Daria | Zhelyaeva | Kursk
  Anna  | Annova    | Kursk
 (24 строки)
+
+skypro=# select first_name, min (age) from employee
+skypro-# where first_name in
+skypro-# (select first_name from (select first_name, count(first_name) from employee group by first_name having count(first_name)>1) as table1)
+skypro-# group by first_name;
+ first_name | min
+------------+-----
+ Ivan       |  14
+ Peter      |  19
